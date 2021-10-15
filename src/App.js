@@ -1,6 +1,10 @@
 import "./styles.css";
 import Article from "./Article";
 
+console.log("aaa");
+console.log("aaa");
+console.log("aaa");
+
 export default function App() {
   return (
     <div className="App">
