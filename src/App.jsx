@@ -1,9 +1,14 @@
 import React from "react";
+import Input from "./Components/Input";
+import Incomplete from "./Components/Incomplete";
+import Complete from "./Components/Complete";
 
 const App = () => {
   return (
     <>
-      <div>a</div>
+      <Input />
+      <Incomplete />
+      <Complete />
     </>
   );
 };
