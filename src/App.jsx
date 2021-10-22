@@ -3,20 +3,19 @@ import React from "react";
 export const App = () => {
   const wrapStyle = {
     backgroundColor: "#c1ffff",
-    minHeight: "100vh"
+    minHeight: "100vh",
+    padding: "100px 0"
   };
 
   const titleStyle = {
     margin: "0",
-    padding: "50px",
+    padding: "0",
     textAlign: "center"
   };
 
   return (
     <div style={wrapStyle}>
-      <h1 style={titleStyle}>T</h1>
-
-      <div>↑</div>
+      <h1 style={titleStyle}>Twitterのような何か</h1>
 
       <div className="input-area">
         <textarea
