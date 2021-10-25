@@ -8,6 +8,8 @@ export const App = () => {
     "サンプル"
   ]);
 
+  const [tweetTime, setTweetTime] = useState([""]);
+
   const onClickAdd = () => {
     if (tweetText === "") return;
     const date = new Date();
@@ -26,6 +28,9 @@ export const App = () => {
       "秒";
 
     const newTweet = [...posetedText, tweetText];
+    const newTime = [...tweetTime, currentTime];
+    console.log(newTime);
+    setTweetTime(newTime);
     setPostedText(newTweet);
     setTweetText("");
   };
@@ -57,7 +62,9 @@ export const App = () => {
 
       <TimelineStyled>
         <TimelineListStyled>
-          {posetedText.map((tweet, index, time) => {
+          {posetedText.map((tweet, index) => {
+            const tweetTime01 = [...tweetTime];
+            console.log(tweetTime01);
             return (
               <TimelineRowStyled key={tweet + index}>
                 <TimelineDeleteStyled
@@ -70,7 +77,7 @@ export const App = () => {
                   {tweet}
                 </TimelineTextStyled>
                 <TimelinePostTimeStyled>
-                  {time}
+                  {tweetTime01}
                 </TimelinePostTimeStyled>
               </TimelineRowStyled>
             );
