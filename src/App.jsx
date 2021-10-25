@@ -17,6 +17,21 @@ export const App = () => {
     setTweetText("");
   };
 
+  const date = new Date();
+  const currentTime =
+    date.getFullYear() +
+    "年" +
+    (date.getMonth() + 1) +
+    "月" +
+    date.getDate() +
+    "日" +
+    date.getHours() +
+    "時" +
+    date.getMinutes() +
+    "分" +
+    date.getSeconds() +
+    "秒";
+
   const onChangeInputText = (event) =>
     setTweetText(event.target.value);
 
@@ -55,9 +70,8 @@ export const App = () => {
                 <TimelineTextStyled>
                   {tweet}
                 </TimelineTextStyled>
-
                 <TimelinePostTimeStyled>
-                  10:30
+                  {currentTime}
                 </TimelinePostTimeStyled>
               </TimelineRowStyled>
             );
