@@ -1,34 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 export const App = () => {
+  const [tweetText, setTweetText] = useState("");
+
+  const [posetedText, setPostedText] = useState([
+    "aaaaa",
+    "bbbb"
+  ]);
+
+  const onClickAdd = () => {
+    if (tweetText === "") return;
+
+    const newTweet = [...posetedText, tweetText];
+
+    setPostedText(newTweet);
+    setTweetText("");
+  };
+
+  const onChangeInputText = (event) =>
+    setTweetText(event.target.value);
+
   return (
     <WrapStyled>
       <TitleStyled>Twitterのような何か</TitleStyled>
       <InputAreaStyled>
         <InputTextStyled
           placeholder="つぶやく内容"
-          name=""
-          id=""
-          cols="100%"
-          rows=""
+          value={tweetText}
+          onChange={onChangeInputText}
         ></InputTextStyled>
         <p className="count">140/150</p>
-        <InputButtonStyle>つぶやく</InputButtonStyle>
+        <InputButtonStyle onClick={onClickAdd}>
+          つぶやく
+        </InputButtonStyle>
       </InputAreaStyled>
 
       <TimelineStyled>
         <TimelineListStyled>
-          <TimelineRowStyled>
-            <img src="" alt="" />
-            <TimelineDeleteStyled>×</TimelineDeleteStyled>
-            <TimelineTextStyled>
-              ごごごごごごご
-            </TimelineTextStyled>
-            <TimelinePostTimeStyled>
-              10:30
-            </TimelinePostTimeStyled>
-          </TimelineRowStyled>
+          {posetedText.map((tweet) => {
+            return (
+              <TimelineRowStyled key={tweet}>
+                <TimelineDeleteStyled>
+                  ×
+                </TimelineDeleteStyled>
+
+                <TimelineTextStyled>
+                  {tweet}
+                </TimelineTextStyled>
+
+                <TimelinePostTimeStyled>
+                  10:30
+                </TimelinePostTimeStyled>
+              </TimelineRowStyled>
+            );
+          })}
         </TimelineListStyled>
       </TimelineStyled>
     </WrapStyled>
@@ -104,12 +130,13 @@ const TimelineRowStyled = styled.li`
 
 const TimelineDeleteStyled = styled.div`
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 5px;
+  right: 5px;
   color: #fff;
 `;
 
 const TimelineTextStyled = styled.p`
+  padding-top: 15px;
   font-weight: bold;
 `;
 
