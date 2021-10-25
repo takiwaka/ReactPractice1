@@ -10,30 +10,29 @@ export const App = () => {
 
   const onClickAdd = () => {
     if (tweetText === "") return;
+    const date = new Date();
+    const currentTime =
+      date.getFullYear() +
+      "年" +
+      (date.getMonth() + 1) +
+      "月" +
+      date.getDate() +
+      "日" +
+      date.getHours() +
+      "時" +
+      date.getMinutes() +
+      "分" +
+      date.getSeconds() +
+      "秒";
 
     const newTweet = [...posetedText, tweetText];
-
     setPostedText(newTweet);
     setTweetText("");
   };
 
-  const date = new Date();
-  const currentTime =
-    date.getFullYear() +
-    "年" +
-    (date.getMonth() + 1) +
-    "月" +
-    date.getDate() +
-    "日" +
-    date.getHours() +
-    "時" +
-    date.getMinutes() +
-    "分" +
-    date.getSeconds() +
-    "秒";
-
-  const onChangeInputText = (event) =>
+  const onChangeInputText = (event) => {
     setTweetText(event.target.value);
+  };
 
   const onClickRemove = (index) => {
     const newTimeline = [...posetedText];
@@ -50,7 +49,7 @@ export const App = () => {
           value={tweetText}
           onChange={onChangeInputText}
         ></InputTextStyled>
-        <p className="count">140/150</p>
+        <p>{tweetText.length}/150</p>
         <InputButtonStyle onClick={onClickAdd}>
           つぶやく
         </InputButtonStyle>
@@ -58,7 +57,7 @@ export const App = () => {
 
       <TimelineStyled>
         <TimelineListStyled>
-          {posetedText.map((tweet, index) => {
+          {posetedText.map((tweet, index, time) => {
             return (
               <TimelineRowStyled key={tweet + index}>
                 <TimelineDeleteStyled
@@ -71,7 +70,7 @@ export const App = () => {
                   {tweet}
                 </TimelineTextStyled>
                 <TimelinePostTimeStyled>
-                  {currentTime}
+                  {time}
                 </TimelinePostTimeStyled>
               </TimelineRowStyled>
             );
