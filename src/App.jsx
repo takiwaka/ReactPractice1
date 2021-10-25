@@ -1,39 +1,27 @@
 import React from "react";
+import styled from "styled-components";
 
 export const App = () => {
-  const wrapStyle = {
-    backgroundColor: "#c1ffff",
-    minHeight: "100vh",
-    padding: "100px 0"
-  };
-
-  const titleStyle = {
-    margin: "0",
-    padding: "0",
-    textAlign: "center"
-  };
-
   return (
-    <div style={wrapStyle}>
-      <h1 style={titleStyle}>Twitterのような何か</h1>
-
-      <div className="input-area">
-        <textarea
-          placeholder="つぶ"
+    <WrapStyled>
+      <TitleStyled>Twitterのような何か</TitleStyled>
+      <InputAreaStyled>
+        <InputTextStyled
+          placeholder="つぶやく内容"
           name=""
           id=""
-          cols="40"
-          rows="5"
-        ></textarea>
-        <button>つぶ〇く</button>
+          cols="100%"
+          rows=""
+        ></InputTextStyled>
         <p className="count">140/150</p>
-      </div>
+        <InputButtonStyle>つぶやく</InputButtonStyle>
+      </InputAreaStyled>
 
       <div>
         <ul>
           <li>
             <img src="" alt="" />
-            <div className="delete">×</div>
+            <div style={{ backgroundColor: "red" }}>×</div>
             <p>tubuyaitanaiyou</p>
             <p>10:30</p>
           </li>
@@ -44,6 +32,48 @@ export const App = () => {
           </li>
         </ul>
       </div>
-    </div>
+    </WrapStyled>
   );
 };
+
+const WrapStyled = styled.div`
+  background-color: whitesmoke;
+  min-height: 100vh;
+  padding: 100px 0;
+`;
+
+const TitleStyled = styled.h1`
+  margin: 0;
+  padding: 0;
+  text-align: center;
+`;
+
+const InputAreaStyled = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 500px;
+  margin: 50px auto;
+  background-color: #ffd146;
+  border-radius: 10px;
+`;
+
+const InputTextStyled = styled.textarea`
+  margin: 10px;
+  border-radius: 10px;
+  resize: none;
+  width: 100%;
+  height: 100px;
+`;
+
+const InputButtonStyle = styled.button`
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #acbc65;
+  border: none;
+  :hover {
+    background-color: #fbac33;
+  }
+`;
