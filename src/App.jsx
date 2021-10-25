@@ -5,8 +5,7 @@ export const App = () => {
   const [tweetText, setTweetText] = useState("");
 
   const [posetedText, setPostedText] = useState([
-    "aaaaa",
-    "bbbb"
+    "サンプル"
   ]);
 
   const onClickAdd = () => {
@@ -20,6 +19,12 @@ export const App = () => {
 
   const onChangeInputText = (event) =>
     setTweetText(event.target.value);
+
+  const onClickRemove = (index) => {
+    const newTimeline = [...posetedText];
+    newTimeline.splice(index, 1);
+    setPostedText(newTimeline);
+  };
 
   return (
     <WrapStyled>
@@ -38,10 +43,12 @@ export const App = () => {
 
       <TimelineStyled>
         <TimelineListStyled>
-          {posetedText.map((tweet) => {
+          {posetedText.map((tweet, index) => {
             return (
-              <TimelineRowStyled key={tweet}>
-                <TimelineDeleteStyled>
+              <TimelineRowStyled key={tweet + index}>
+                <TimelineDeleteStyled
+                  onClick={() => onClickRemove(index)}
+                >
                   ×
                 </TimelineDeleteStyled>
 
@@ -133,6 +140,9 @@ const TimelineDeleteStyled = styled.div`
   top: 5px;
   right: 5px;
   color: #fff;
+  :hover {
+    cursor: pointer;
+  }
 `;
 
 const TimelineTextStyled = styled.p`
