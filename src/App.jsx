@@ -17,21 +17,20 @@ export const App = () => {
         <InputButtonStyle>つぶやく</InputButtonStyle>
       </InputAreaStyled>
 
-      <div>
-        <ul>
-          <li>
+      <TimelineStyled>
+        <TimelineListStyled>
+          <TimelineRowStyled>
             <img src="" alt="" />
-            <div style={{ backgroundColor: "red" }}>×</div>
-            <p>tubuyaitanaiyou</p>
-            <p>10:30</p>
-          </li>
-          <li>
-            <div className="delete">×</div>
-            <p>tubuyaitanaiyou</p>
-            <p>10:30</p>
-          </li>
-        </ul>
-      </div>
+            <TimelineDeleteStyled>×</TimelineDeleteStyled>
+            <TimelineTextStyled>
+              ごごごごごごご
+            </TimelineTextStyled>
+            <TimelinePostTimeStyled>
+              10:30
+            </TimelinePostTimeStyled>
+          </TimelineRowStyled>
+        </TimelineListStyled>
+      </TimelineStyled>
     </WrapStyled>
   );
 };
@@ -53,7 +52,8 @@ const InputAreaStyled = styled.div`
   flex-wrap: wrap;
   justify-content: flex-end;
   max-width: 500px;
-  margin: 50px auto;
+  margin: 50px auto 0;
+  padding: 10px;
   background-color: #ffd146;
   border-radius: 10px;
 `;
@@ -73,7 +73,46 @@ const InputButtonStyle = styled.button`
   border-radius: 10px;
   background-color: #acbc65;
   border: none;
+  border-bottom: 2px solid;
   :hover {
     background-color: #fbac33;
   }
+  :active {
+    transform: translateY(2px);
+    border: none;
+  }
+`;
+
+const TimelineStyled = styled.div`
+  max-width: 500px;
+  background-color: #98d5cb;
+  border-radius: 10px;
+  margin: 30px auto;
+  padding: 10px;
+  color: white;
+`;
+
+const TimelineListStyled = styled.ul`
+  list-style: none;
+  padding: 0;
+`;
+
+const TimelineRowStyled = styled.li`
+  position: relative;
+  background-color: teal;
+`;
+
+const TimelineDeleteStyled = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #fff;
+`;
+
+const TimelineTextStyled = styled.p`
+  font-weight: bold;
+`;
+
+const TimelinePostTimeStyled = styled.p`
+  font-size: 0.7rem;
 `;
