@@ -4,7 +4,9 @@ import styled from "styled-components";
 export const App = () => {
   const [tweetText, setTweetText] = useState("");
   const [posetedText, setPostedText] = useState(["sample"]);
-  const [tweetTime, setTweetTime] = useState(["10:30"]);
+  const [tweetTime, setTweetTime] = useState([
+    "2021年10月26日13時1分50秒"
+  ]);
   const tweetCountJudge =
     tweetText.length === 0 || tweetText.length > 150;
 
@@ -84,7 +86,7 @@ export const App = () => {
                   {text}
                 </TimelineTextStyled>
                 <TimelinePostTimeStyled>
-                  {tweetTime}
+                  {tweetTime[index]}
                 </TimelinePostTimeStyled>
               </TimelineRowStyled>
             );
