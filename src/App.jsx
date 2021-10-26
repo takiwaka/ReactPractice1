@@ -5,9 +5,12 @@ export const App = () => {
   const [tweetText, setTweetText] = useState("");
   const [posetedText, setPostedText] = useState(["sample"]);
   const [tweetTime, setTweetTime] = useState(["10:30"]);
+  const tweetCountJudge =
+    tweetText.length === 0 || tweetText.length > 150;
 
   const onClickAdd = () => {
-    if (tweetText === "") return;
+    if (tweetCountJudge) return;
+    console.log(tweetText.length);
     const date = new Date();
     const currentTime =
       date.getFullYear() +
@@ -54,7 +57,12 @@ export const App = () => {
           value={tweetText}
           onChange={onChangeInputText}
         ></InputTextStyled>
-        <p>{tweetText.length}/150</p>
+        <p>
+          <span style={{ color: tweetCountJudge && "red" }}>
+            {tweetText.length}
+          </span>
+          /150
+        </p>
         <InputButtonStyle onClick={onClickAdd}>
           つぶやく
         </InputButtonStyle>
