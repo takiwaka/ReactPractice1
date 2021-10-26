@@ -63,6 +63,7 @@ const TimelineDeleteStyled = styled.div`
 const TimelineTextStyled = styled.p`
   padding-top: 15px;
   font-weight: bold;
+  overflow-wrap: anywhere;
 `;
 
 const TimelinePostTimeStyled = styled.p`
