@@ -15,7 +15,6 @@ export const App = () => {
 
   const onClickAdd = () => {
     if (tweetCountJudge) return;
-    console.log(tweetText.length);
     const date = new Date();
     const currentTime =
       date.getFullYear() +
