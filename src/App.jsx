@@ -3,12 +3,8 @@ import styled from "styled-components";
 
 export const App = () => {
   const [tweetText, setTweetText] = useState("");
-
-  const [posetedText, setPostedText] = useState([
-    "サンプル"
-  ]);
-
-  const [tweetTime, setTweetTime] = useState([""]);
+  const [posetedText, setPostedText] = useState(["sample"]);
+  const [tweetTime, setTweetTime] = useState(["10:30"]);
 
   const onClickAdd = () => {
     if (tweetText === "") return;
@@ -31,6 +27,7 @@ export const App = () => {
     const newTime = [...tweetTime, currentTime];
     console.log(newTime);
     setTweetTime(newTime);
+
     setPostedText(newTweet);
     setTweetText("");
   };
@@ -41,8 +38,11 @@ export const App = () => {
 
   const onClickRemove = (index) => {
     const newTimeline = [...posetedText];
+    const newTimeStamp = [...tweetTime];
     newTimeline.splice(index, 1);
+    newTimeStamp.splice(index, 1);
     setPostedText(newTimeline);
+    setTweetTime(newTimeStamp);
   };
 
   return (
@@ -62,22 +62,21 @@ export const App = () => {
 
       <TimelineStyled>
         <TimelineListStyled>
-          {posetedText.map((tweet, index) => {
-            const tweetTime01 = [...tweetTime];
-            console.log(tweetTime01);
+          {posetedText.map((text, index) => {
             return (
-              <TimelineRowStyled key={tweet + index}>
+              <TimelineRowStyled key={text + index}>
                 <TimelineDeleteStyled
-                  onClick={() => onClickRemove(index)}
+                  onClick={() => {
+                    onClickRemove(index, posetedText);
+                  }}
                 >
                   ×
                 </TimelineDeleteStyled>
-
                 <TimelineTextStyled>
-                  {tweet}
+                  {text}
                 </TimelineTextStyled>
                 <TimelinePostTimeStyled>
-                  {tweetTime01}
+                  {tweetTime}
                 </TimelinePostTimeStyled>
               </TimelineRowStyled>
             );
