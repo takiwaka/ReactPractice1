@@ -4,7 +4,7 @@
 
 下記Udemyを履修したので、復習も含め追加で作ってみた。
 
-モダンJavaScriptの基礎から始める挫折しないためのReact入門
+(モダンJavaScriptの基礎から始める挫折しないためのReact入門)
 
 https://www.udemy.com/course/modern_javascipt_react_beginner/
 
